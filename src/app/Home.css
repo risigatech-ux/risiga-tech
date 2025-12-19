@@ -1,0 +1,98 @@
+.hero-sec {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(179.54deg, rgb(248, 248, 252) 0.42%, rgb(238, 242, 253) 83.6%);
+  padding: 40px 80px;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,  /* top of curve */
+    85% 100%,  /* deepest point of curve */
+    0 80%      /* top of curve left */
+  );
+}
+
+
+
+/* Background decorative image */
+.hero-sec::after {
+  content: "";
+  position: absolute;
+
+  width: 900px;
+  height: 900px;
+
+  left: -250px;     /* adjust as per design */
+  bottom: -320px;
+
+  background-image: url("/images/home/homebg1.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  opacity: 0.6;
+  z-index: 0;
+
+  transform: rotate(358deg);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hero-sec::after {
+    width: 500px;
+    height: 500px;
+    top: 40px;
+    right: -100px;
+  }
+}
+
+
+/* Pill */
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 66px;
+  padding: 0 16px;
+  border-radius: 19px;
+  background: linear-gradient(135deg, #b2d4ec, #d3b5e8 );
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+  /* 🔥 smooth size change */
+  transition: width 0.45s ease, padding 0.45s ease;
+}
+
+.hero-pill-mask {
+  position: relative;
+  height: 70px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  perspective: 800px; /* slightly better depth */
+}
+
+.hero-pill-text {
+  display: inline-flex;          /* 🔥 KEY */
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;                  /* 🔥 MATCH mask height */
+  line-height: 1.1;
+  font-weight: 700;
+  white-space: nowrap;
+
+  background: linear-gradient(114.92deg, #577ed2 -11.21%, #9c2ee4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-pill-mask {
+  perspective: 800px;
+}
+
+.hero-pill {
+  backface-visibility: hidden; /* 🔥 prevents mirror flicker */
+}
+
