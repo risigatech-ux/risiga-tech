@@ -185,7 +185,6 @@ export default function Navbar() {
         rounded-full px-10 pt-4 pb-2 min-w-[85vw] max-w-6xl
       `}
       >
-        
         <nav className="flex items-center justify-between gap-6">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
