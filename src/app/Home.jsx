@@ -216,7 +216,6 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              
 
               {/* RIGHT: CONTENT */}
               <div className="lg:col-span-9">
@@ -277,67 +276,66 @@ export default function Home() {
           </div>
 
           {/* ===== MOBILE / TABLET (< LG) ===== */}
-<div className="lg:hidden space-y-4">
-  {services.map((service, idx) => {
-    const isOpen = activeService === idx;
+          <div className="lg:hidden space-y-4">
+            {services.map((service, idx) => {
+              const isOpen = activeService === idx;
 
-    return (
-      <div
-        key={service.id}
-        className="rounded-2xl bg-gradient-to-br from-[#EEF2FF] via-[#F5F3FF] to-white overflow-hidden"
-      >
-        {/* HEADER */}
-        <button
-          onClick={() => setActiveService(isOpen ? null : idx)}
-          className="flex w-full items-center justify-between px-5 py-4 text-left"
-        >
-          <div className="flex items-center gap-3">
-            <Image src={service.icon} alt="" width={22} height={22} />
-            <span className="font-semibold text-[#0249BC]">
-              {service.title}
-            </span>
+              return (
+                <div
+                  key={service.id}
+                  className="rounded-2xl bg-gradient-to-br from-[#EEF2FF] via-[#F5F3FF] to-white overflow-hidden"
+                >
+                  {/* HEADER */}
+                  <button
+                    onClick={() => setActiveService(isOpen ? null : idx)}
+                    className="flex w-full items-center justify-between px-5 py-4 text-left"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Image src={service.icon} alt="" width={22} height={22} />
+                      <span className="font-semibold text-[#0249BC]">
+                        {service.title}
+                      </span>
+                    </div>
+
+                    <span
+                      className={`transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    >
+                      ⌄
+                    </span>
+                  </button>
+
+                  {/* CONTENT */}
+                  {isOpen && (
+                    <div className="px-5 pb-6 space-y-5">
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        {service.description}
+                      </p>
+
+                      <Link
+                        href={service.link}
+                        className="inline-flex items-center gap-2 rounded-lg bg-[#0249BC] px-4 py-2 text-sm font-semibold text-white"
+                      >
+                        Learn More →
+                      </Link>
+
+                      {/* IMAGE */}
+                      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-white">
+                        <Image
+                          src={service.imageSrc}
+                          alt=""
+                          fill
+                          className="object-cover"
+                          priority
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
-
-          <span
-            className={`transition-transform ${
-              isOpen ? "rotate-180" : ""
-            }`}
-          >
-            ⌄
-          </span>
-        </button>
-
-        {/* CONTENT */}
-        {isOpen && (
-          <div className="px-5 pb-6 space-y-5">
-            <p className="text-sm text-gray-700 leading-relaxed">
-              {service.description}
-            </p>
-
-            <Link
-              href={service.link}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#0249BC] px-4 py-2 text-sm font-semibold text-white"
-            >
-              Learn More →
-            </Link>
-
-            {/* IMAGE */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-white">
-              <Image
-                src={service.imageSrc}
-                alt=""
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  })}
-</div>
-
         </div>
       </section>
     </>
